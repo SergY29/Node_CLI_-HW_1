@@ -1,4 +1,6 @@
+const { listContacts } = require('./contacts')
 
 
 
-console.log(process.argv)
+
+console.log(listContacts())

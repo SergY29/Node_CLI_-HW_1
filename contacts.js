@@ -2,15 +2,26 @@ const fs = require('fs').promises;
 const path = require('path');
 
 
-const contactsPath = path.resolve('contacts.json')
-console.log(contactsPath)
 
-function listContacts() {
-    fs.readFile('./db/contacts.json', 'utf-8')
+const contactsPath = path.resolve('./db/contacts.json')
+// console.log(contactsPath)
+
+
+const listContacts = async () => {
+    const dataString = await fs.readFile(contactsPath, 'utf8');
+    const data = JSON.parse(dataString);
+    return data;
+    // return console.log(data);
 }
 
-function getContactById(contactId) {
-    // ...твой код
+
+
+
+const getContactById = async (contactId) => {
+    const contacts = await listContacts();
+    const contact = contacts.find(contact => contact.id === String(contactId));
+    // return contact;
+    return console.log(contact);
 }
 
 function removeContact(contactId) {
@@ -21,12 +32,15 @@ function addContact(name, email, phone) {
     // ...твой код
 }
 
-console.log(listContacts())
+
+
+// console.log(listContacts())
+console.log(getContactById(6))
+
 
 module.exports = {
     listContacts,
-    getContactById,
-    removeContact,
-    addContact
+    getContactById
+
 }
 
