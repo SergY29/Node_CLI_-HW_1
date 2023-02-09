@@ -4,20 +4,19 @@ const { listContacts, getContactById, removeContact, addContact } = require('./c
 const invokeAction = async ({ action, id, name, email, phone }) => {
     switch (action) {
         case "list":
-            const data = await listContacts();
-            console.log(data);
+            console.log(await listContacts());
             break;
 
         case "get":
-            // ... id
+            await getContactById(id);
             break;
 
         case "add":
-            // ... name email phone
+            await addContact(name, email, phone);
             break;
 
         case "remove":
-            // ... id
+            await removeContact(id);
             break;
 
         default:
@@ -27,6 +26,3 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 
 invokeAction(argv);
 
-
-
-// console.log(listContacts())
