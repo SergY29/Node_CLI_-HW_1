@@ -44,9 +44,8 @@ const addContact = async (name, email, phone) => {
     };
     const newListContacts = [...contacts, newContact];
     await fs.writeFile(contactsPath, JSON.stringify(newListContacts), 'utf8');
+    // return newContact;
     return console.log(newContact)
-    // return console.log(...contacts)
-
 }
 
 
@@ -54,7 +53,7 @@ const addContact = async (name, email, phone) => {
 // console.log(listContacts())
 // console.log(getContactById(2))
 // console.log(removeContact(9))
-console.log(addContact('Igor', 'igor@mail.com', "(734) 598-34292"))
+// console.log(addContact('Igor', 'igor@mail.com', "(734) 598-34292"))
 
 
 module.exports = {
@@ -62,6 +61,5 @@ module.exports = {
     getContactById,
     removeContact,
     addContact
-
 }
 
